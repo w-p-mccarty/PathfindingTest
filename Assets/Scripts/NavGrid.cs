@@ -509,12 +509,13 @@ public class NavGrid : MonoBehaviour
     private void OnDrawGizmos()
     {
         //We only want to do this if we are in debug mode
-        if (!_debug) return;
+        if (!_debug || _nodeSize == 0) return;
         
         //Draw grid
         Gizmos.color = Color.white;
         var position = this.transform.position;
         Gizmos.DrawWireCube(position, new Vector3(_gridSize.x, .1f, _gridSize.y));
+        
         
         float halfNodeSize = _nodeSize / 2;
         int xNodes = Convert.ToInt32(Mathf.Floor(_gridSize.x / _nodeSize));
